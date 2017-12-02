@@ -22,6 +22,8 @@ shortEMA = Sequence(L)  # 5EMA
 middleEMA = Sequence(L)  # 13EMA
 longEMA = Sequence(L)  # 34EMA
 
+drawer = Drawer((N_CURVE, WIDTH))
+
 if __name__ == '__main__':
 
     # APIを設定
@@ -36,7 +38,6 @@ if __name__ == '__main__':
             """
             ログデータをファイルに出力
             """
-
             # tickerを取得
             ticker = api.get_ticker(product)
 
@@ -77,8 +78,6 @@ if __name__ == '__main__':
             """
             グラフ描画
             """
-            drawer = Drawer((N_CURVE, WIDTH))
-
             # 1日目は移動平均に終値を用いる
             if first_day:
                 short = average
@@ -105,4 +104,4 @@ if __name__ == '__main__':
             data = (average, short, middle, long_)
 
             drawer.update(data)
-            drawer.sleep(0.1)
+            drawer.sleep(0.001)

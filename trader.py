@@ -22,7 +22,6 @@ class Trader:
         """
         self.agent = agent
         self.manager = Manager(losscut)
-        self.drawer = Drawer(self.agent.drawerInfo())
         self.trade = 0
         self.wait = 60
         self.order_amount = 0   # 注文失敗時の注文量を保持
@@ -65,11 +64,7 @@ class Trader:
                         self.reset()
 
             # agent.tick()を呼び出し、アクションとデータを取得
-            (act, data) = self.agent.tick(last, average, amount, self.order_amount == 0)
-
-            # dataが空ならリターン
-            if data is None:
-                return
+            act = self.agent.tick(last, average, amount, self.order_amount == 0)
 
             # 残高を取得し購入可能数を計算
             inventory = self.manager.getInventory() * self.AVAILABLE
@@ -126,8 +121,6 @@ class Trader:
                     else:
                         self.order_count = self.CHALLENGE
 
-            self.drawer.update(data)
-
             print("Inventory: " + str(inventory))
             print("Trade: " + str(self.trade))
             print("Price: " + str(average))
@@ -135,5 +128,3 @@ class Trader:
             print("Passed minutes: " + str(self.tick_count))
             # print("Time: " + str(time.time()))
             print("----------")
-
-        self.drawer.sleep(0.1)

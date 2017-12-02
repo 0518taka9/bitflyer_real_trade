@@ -41,12 +41,12 @@ class PerfectOrderAgent:
         self.down_trend = 0
         self.hold_price = 0
 
-    def drawerInfo(self):
-        """
-        グラフ描画用クラスDrawerに情報を渡す
-        :return: 曲線数、幅
-        """
-        return (self.N_CURVE, self.WIDTH)
+    # def drawerInfo(self):
+    #     """
+    #     グラフ描画用クラスDrawerに情報を渡す
+    #     :return: 曲線数、幅
+    #     """
+    #     return (self.N_CURVE, self.WIDTH)
 
     def reset(self):
         """
@@ -187,4 +187,4 @@ class PerfectOrderAgent:
                     self.cut = last * (1 + self.LOSSCUT)
                     self.hold_price = last
 
-        return (act, (average, short, middle, long_))
+        return act
