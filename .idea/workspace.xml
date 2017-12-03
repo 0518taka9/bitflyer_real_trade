@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2a2f519-6ec9-4fd7-8247-9db0e7203f8e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/realtrade.iml" afterPath="$PROJECT_DIR$/.idea/realtrade.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/exec.py" afterPath="$PROJECT_DIR$/exec.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log_writer.py" afterPath="$PROJECT_DIR$/log_writer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager.py" afterPath="$PROJECT_DIR$/manager.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/memo" afterPath="$PROJECT_DIR$/memo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/perfect_order_agent.py" afterPath="$PROJECT_DIR$/perfect_order_agent.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trader.py" afterPath="$PROJECT_DIR$/trader.py" />
     </list>
@@ -18,26 +19,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/realtrade$log_writer.coverage" NAME="log_writer Coverage Results" MODIFIED="1512219331571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/realtrade$log_writer.coverage" NAME="log_writer Coverage Results" MODIFIED="1512287764544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="lib.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="108" column="17" lean-forward="true" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="log_writer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/log_writer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="240">
+              <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
               <folding>
                 <element signature="e#47#69#0" expanded="true" />
               </folding>
@@ -48,8 +39,8 @@
       <file leaf-file-name="log.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/log.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,8 +49,8 @@
       <file leaf-file-name="exec.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exec.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-45">
+              <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -68,9 +59,11 @@
       <file leaf-file-name="trader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-              <folding />
+            <state relative-caret-position="949">
+              <caret line="119" column="45" lean-forward="true" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="45" />
+              <folding>
+                <element signature="e#46#57#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,28 +71,28 @@
       <file leaf-file-name="manager.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1340">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="795">
+              <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="perfect_order_agent.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="perfect_order_agent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/perfect_order_agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-334">
-              <caret line="129" column="58" lean-forward="true" selection-start-line="129" selection-start-column="58" selection-end-line="129" selection-end-column="58" />
+            <state relative-caret-position="2520">
+              <caret line="168" column="40" lean-forward="true" selection-start-line="168" selection-start-column="40" selection-end-line="168" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="memo" pinned="false" current-in-tab="false">
+      <file leaf-file-name="memo" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/memo">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -113,9 +106,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/exec.py" />
         <option value="$PROJECT_DIR$/trader.py" />
-        <option value="$PROJECT_DIR$/perfect_order_agent.py" />
         <option value="$PROJECT_DIR$/log_writer.py" />
+        <option value="$PROJECT_DIR$/manager.py" />
+        <option value="$PROJECT_DIR$/memo" />
+        <option value="$PROJECT_DIR$/perfect_order_agent.py" />
         <option value="$PROJECT_DIR$/log.txt" />
       </list>
     </option>
@@ -356,6 +352,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f2a2f519-6ec9-4fd7-8247-9db0e7203f8e" name="Default" comment="" />
@@ -404,34 +403,42 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/memo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
+        <state relative-caret-position="1554">
           <caret line="108" column="17" lean-forward="true" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log.txt">
+    <entry file="file://$PROJECT_DIR$/../simulator/log/1202_23-1203_08.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="-170426">
+          <caret line="49" column="55" lean-forward="false" selection-start-line="49" selection-start-column="55" selection-end-line="49" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perfect_order_agent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2520">
+          <caret line="168" column="40" lean-forward="true" selection-start-line="168" selection-start-column="40" selection-end-line="168" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/log_writer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        <state relative-caret-position="240">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding>
             <element signature="e#47#69#0" expanded="true" />
           </folding>
@@ -440,13 +447,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1340">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="795">
+          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/trader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="949">
+          <caret line="119" column="45" lean-forward="true" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="45" />
+          <folding>
+            <element signature="e#46#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -454,18 +479,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trader.py">
+    <entry file="file://$PROJECT_DIR$/memo">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/perfect_order_agent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="129" column="58" lean-forward="true" selection-start-line="129" selection-start-column="58" selection-end-line="129" selection-end-column="58" />
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="39" />
           <folding />
         </state>
       </provider>

@@ -52,7 +52,7 @@ class Manager:
         if len(trades) > 0:
             self.last_id = trades[0]['id']
 
-        # priceを設定
+        # averageを計算
         if s_amount == 0:
             average = self.getLastPrice()
         else:

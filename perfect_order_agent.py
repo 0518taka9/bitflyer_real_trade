@@ -4,17 +4,15 @@ from lib import Const, Sequence
 
 
 class PerfectOrderAgent:
-    N_CURVE = 4  # 曲線の数
-    WIDTH = 60   # 表示するデータ数
 
     STATE_STAY = 0
     STATE_ASK = 1
     STATE_BID = 2
 
-    BENEFIT = 0.005     # 利幅
-    LOSSCUT = 0.01     # ロスカット
-    CANDLESTICKS = 4    # エントリー条件(PO条件維持)
-    CLOSE = 0.001       # エントリー条件(平均価格が短期移動平均線に近づく)
+    BENEFIT = 0.004  # 利幅
+    LOSSCUT = 0.002  # ロスカット
+    CANDLESTICKS = 4  # エントリー条件(PO条件維持)
+    CLOSE = 0.001  # エントリー条件(平均価格が短期移動平均線に近づく)
 
     def __init__(self, L, I):
         """
@@ -25,7 +23,6 @@ class PerfectOrderAgent:
         self.shortEMA = Sequence(L)  # 5EMA
         self.middleEMA = Sequence(L)  # 13EMA
         self.longEMA = Sequence(L)  # 34EMA
-        # self.longEMA = Sequence(L)  # 120EMA
 
         self.isActive = False  # 価格情報が取得できているか
         self.state = self.STATE_STAY
@@ -69,14 +66,16 @@ class PerfectOrderAgent:
         self.average = average
         self.tick_count += 1
 
-        # (I)回に1回decide()を呼び出す
         # 買いor売り状態なら連続で呼び出し
-        if self.tick_count == self.I or self.state != self.STATE_STAY:
-            self.tick_count = 0
+        if self.state != self.STATE_STAY:
+            return self.decide(active)
+
+        # (I)回に1回decide()を呼び出す
+        elif self.tick_count == self.I:
             return self.decide(active)
 
         else:
-            return (Const.ACT_STAY, None)
+            return Const.ACT_STAY
 
     # def getPrice(self):
     #     return self.price
@@ -89,7 +88,7 @@ class PerfectOrderAgent:
         エントリー条件(PO条件がローソク何本分続くか、価格と短期移動平均線の差)
 
         :param active: 前回の注文が成功したか
-        :return: アクション、グラフ描画用データ(N_CURVE数)
+        :return: アクション
         """
 
         # 価格を取得し保持
@@ -99,54 +98,51 @@ class PerfectOrderAgent:
 
         self.isActive = (self.priceSeq.get(0) > 0)
 
-        # 1日目は移動平均に終値を用いる
+        # 1分目は移動平均に平均値を用いる
         if self.first_day:
+            self.tick_count = 0
+
             short = average
             middle = average
             long_ = average
-            # long = average
 
             self.shortEMA.append(short)
             self.middleEMA.append(middle)
             self.longEMA.append(long_)
-            # self.longEMA.append(long)
 
             self.first_day = False
-        else:
-            # 2日目以降
+
+        # 2分目以降
+        # 待機状態ならデータ保存&PO条件判断
+        # 買いor売り状態なら、1分間に1回データ保存&PO条件判断
+        elif self.state == self.STATE_STAY or self.tick_count == self.I:
+            self.tick_count = 0
+
             # EMA(n) = EMA(n－1) + α ×｛当日価格 - EMA(n-1)｝
             # α（平滑化定数）＝2 / (n＋1）
             short = self.shortEMA.get(-1) + (2.0 / 6.0) * (average - self.shortEMA.get(-1))
             middle = self.middleEMA.get(-1) + (2.0 / 14.0) * (average - self.middleEMA.get(-1))
             long_ = self.longEMA.get(-1) + (2.0 / 35.0) * (average - self.longEMA.get(-1))
-            # long = self.longEMA.get(-1) + (2.0 / 25.0) * (average - self.longEMA.get(-1))
 
             self.shortEMA.append(short)
             self.middleEMA.append(middle)
             self.longEMA.append(long_)
-            # self.longEMA.append(long)
 
-        # パーフェクトオーダー条件(上昇トレンド)
-        if short > middle and middle > long_ and self.middleEMA.df(-1) > 0 and self.longEMA.df(-1) > 0:
-            self.up_trend += 1
-            self.down_trend = 0
-        # 5EMAと13EMAがクロスしたら崩壊
-        # elif self.shortEMA.df(-1) < 0 and self.middleEMA1.df(-1) < 0:
-        elif short < middle:
-            self.up_trend = 0
+            # パーフェクトオーダー条件(上昇トレンド)
+            if short > middle and middle > long_ and self.middleEMA.df(-1) > 0 and self.longEMA.df(-1) > 0:
+                self.up_trend += 1
+                self.down_trend = 0
+            # 5EMAと13EMAがクロスしたら崩壊
+            elif short < middle:
+                self.up_trend = 0
 
-        # パーフェクトオーダー条件(下降トレンド)
-        if short < middle and middle < long_ and self.middleEMA.df(-1) < 0 and self.longEMA.df(-1) < 0:
-            self.down_trend += 1
-            self.up_trend = 0
-        # 5EMAと13EMAがクロスしたら崩壊
-        # elif self.shortEMA.df(-1) > 0 and self.middleEMA1.df(-1) > 0:
-        elif short > middle:
-            self.down_trend = 0
-
-        # print "up :" + str(self.up_trend)
-        # print "down :" + str(self.down_trend)
-        # print "------------------"
+            # パーフェクトオーダー条件(下降トレンド)
+            if short < middle and middle < long_ and self.middleEMA.df(-1) < 0 and self.longEMA.df(-1) < 0:
+                self.down_trend += 1
+                self.up_trend = 0
+            # 5EMAと13EMAがクロスしたら崩壊
+            elif short > middle:
+                self.down_trend = 0
 
         # 行動決定
         act = Const.ACT_STAY
@@ -171,7 +167,7 @@ class PerfectOrderAgent:
 
             # 待機状態
             if state == self.STATE_STAY:
-                # 5本のローソク足が経過してもPO条件(上昇)維持 and 平均価格が短期移動平均線に近づく(短期移動平均線を超えない)
+                # (CANDLESTICKS)本のローソク足が経過してもPO条件(上昇)維持 and 平均価格が短期移動平均線に近づく(短期移動平均線を超えない)
                 if self.up_trend >= self.CANDLESTICKS and average - self.shortEMA.get(-1) < average * self.CLOSE \
                         and self.middleEMA.get(-1) > average:
                     self.state = self.STATE_ASK
@@ -179,7 +175,7 @@ class PerfectOrderAgent:
                     self.cut = last * (1 - self.LOSSCUT)
                     self.hold_price = last
 
-                # 5本のローソク足が経過してもPO条件(下降)維持 and 平均価格が短期移動平均線に近づく(短期移動平均線を超えない)
+                # (CANDLESTICKS)本のローソク足が経過してもPO条件(下降)維持 and 平均価格が短期移動平均線に近づく(短期移動平均線を超えない)
                 if self.down_trend >= self.CANDLESTICKS and self.shortEMA.get(-1) - average < average * self.CLOSE \
                         and self.middleEMA.get(-1) < average:
                     self.state = self.STATE_BID

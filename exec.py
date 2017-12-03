@@ -15,7 +15,7 @@ def pause():
 
 if __name__ == '__main__':
 
-    agent = PerfectOrderAgent(34, 1)
+    agent = PerfectOrderAgent(34, 20)
     """
     :param L: 価格を保持する日数
     :param I: decide()呼び出しの間隔(traderのself.wait * I 秒)

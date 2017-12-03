@@ -23,7 +23,7 @@ class Trader:
         self.agent = agent
         self.manager = Manager(losscut)
         self.trade = 0
-        self.wait = 60
+        self.wait = 3
         self.order_amount = 0   # 注文失敗時の注文量を保持
         self.last_action = time.time()
         self.tick_count = 0
@@ -63,7 +63,7 @@ class Trader:
                         self.order_amount = 0
                         self.reset()
 
-            # agent.tick()を呼び出し、アクションとデータを取得
+            # agent.tick()を呼び出し、アクションを取得
             act = self.agent.tick(last, average, amount, self.order_amount == 0)
 
             # 残高を取得し購入可能数を計算
