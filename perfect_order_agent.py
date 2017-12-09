@@ -9,8 +9,8 @@ class PerfectOrderAgent:
     STATE_ASK = 1
     STATE_BID = 2
 
-    BENEFIT = 0.004  # 利幅
-    LOSSCUT = 0.002  # ロスカット
+    BENEFIT = 0.014  # 利幅
+    LOSSCUT = 0.005  # ロスカット
     CANDLESTICKS = 4  # エントリー条件(PO条件維持)
     CLOSE = 0.001  # エントリー条件(平均価格が短期移動平均線に近づく)
 
@@ -95,6 +95,8 @@ class PerfectOrderAgent:
         last = self.last
         average = self.average
         self.priceSeq.append(average)
+
+        # print self.priceSeq.toArray()
 
         self.isActive = (self.priceSeq.get(0) > 0)
 

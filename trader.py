@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import time
+import requests
 from lib import *
 from manager import Manager
 
@@ -12,8 +13,9 @@ self.waitごとにtickを実行する。
 
 
 class Trader:
-    AVAILABLE = 0.8     # 残高の何％使うか
-    CHALLENGE = 5      # 新規注文のチャレンジ回数
+    AVAILABLE = 0.8  # 残高の何％使うか
+    CHALLENGE = 5  # 新規注文のチャレンジ回数
+    LEVERAGE = 1    # レバレッジ
 
     def __init__(self, agent, losscut):
         """
@@ -23,10 +25,28 @@ class Trader:
         self.agent = agent
         self.manager = Manager(losscut)
         self.trade = 0
-        self.wait = 3
-        self.order_amount = 0   # 注文失敗時の注文量を保持
+        self.wait = 300
+        self.order_amount = 0  # 注文失敗時の注文量を保持
         self.last_action = time.time()
         self.tick_count = 0
+
+        # APIで34本分のlogデータを取得してagentのSeqに格納
+        values = []
+        period = 300    # 何分足かを決める
+        after = int(time.time() - period * 34)
+        response = requests.get(
+            "https://api.cryptowat.ch/markets/bitflyer/btcfxjpy/ohlc?periods=" + str(period) + "&after=" + str(after))
+        for value in response.json()["result"][str(period)]:
+            # (終値, 平均値, 数量)
+            values.append((value[4], (value[2] + value[3]) / 2, value[5]))
+
+        values = values[:-1]
+
+        for value in values:
+            # for i in range(20):
+            self.agent.tick(value[0], value[1], value[2], True)
+
+        self.agent.reset()
 
     def reset(self):
         self.trade = 0
@@ -67,11 +87,11 @@ class Trader:
             act = self.agent.tick(last, average, amount, self.order_amount == 0)
 
             # 残高を取得し購入可能数を計算
-            inventory = self.manager.getInventory() * self.AVAILABLE
+            inventory = self.manager.getInventory() * self.AVAILABLE * self.LEVERAGE
             self.jpy = inventory
             self.coin = inventory / average
 
-            trade = 0   # 取引数量
+            trade = 0  # 取引数量
             self.tick_count += 1
 
             if act == Const.ACT_ASK:

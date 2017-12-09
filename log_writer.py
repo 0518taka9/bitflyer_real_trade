@@ -9,8 +9,8 @@ API_KEY = ""
 API_SECRET = ""
 last_id = 0
 last_action = time.time()
-wait = 3
-do_draw = 60 / wait
+wait = 300
+do_draw = 300 / wait
 drawer_count = 0
 
 N_CURVE = 4  # 曲線の数
@@ -70,11 +70,11 @@ if __name__ == '__main__':
             else:
                 average = s_price / s_amount
 
-            # (終値, 平均値, 数量, 高値, 安値)をlog.txtに出力
-            f = open("log.txt", "a")
-            f.write("(" + str(ticker["ltp"]) + ", " + str(average) + ", " + str(s_amount) + ", " + str(
-                ticker["best_ask"]) + ", " + str(ticker["best_bid"]) + ")" + "\n")
-            f.close()
+            # # (終値, 平均値, 数量, 高値, 安値)をlog.txtに出力
+            # f = open("log.txt", "a")
+            # f.write("(" + str(ticker["ltp"]) + ", " + str(average) + ", " + str(s_amount) + ", " + str(
+            #     ticker["best_ask"]) + ", " + str(ticker["best_bid"]) + ")" + "\n")
+            # f.close()
 
             """
             グラフ描画
